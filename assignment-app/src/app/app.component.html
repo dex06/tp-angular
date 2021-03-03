@@ -1,0 +1,18 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="app-header">
+  <div><a href="https://www.positronx.io" target="_blank" class="positronx">PositronX.io</a></div>
+  <span class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+  </span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+
+<h1><a routerLink="/home">{{titre}}</a></h1>
+<mat-slide-toggle color="primary" (click)="login()">Login</mat-slide-toggle>
+<!--
+  On va afficher le composant qui correspond à l'url courant (à la route)
+-->
+<router-outlet></router-outlet>
