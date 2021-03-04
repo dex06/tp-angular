@@ -15,6 +15,7 @@ var VerifyToken = require('./VerifyToken');
 
 router.post('/register', function(req, res) {
   
+    console.log(req.body)
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     
     User.create({

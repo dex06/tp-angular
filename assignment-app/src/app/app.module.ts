@@ -25,10 +25,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
-import { LogInComponent } from './assignments/log-in/log-in.component';
-import { RegisterComponent } from './assignments/register/register.component';
+import { LogInComponent } from './users/log-in/log-in.component';
+import { RegisterComponent } from './users/register/register.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { StepperComponent } from './assignments/stepper/stepper.component';
 
 const routes:Routes = [
   {path:'', component:AssignmentsComponent},
@@ -51,7 +52,8 @@ const routes:Routes = [
     AddAssignmentComponent,
     EditAssignmentComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
+    StepperComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule,
