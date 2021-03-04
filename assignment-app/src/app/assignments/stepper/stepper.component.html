@@ -43,7 +43,7 @@
       <form [formGroup]="fourthFormGroup">
         <mat-form-field>
           <mat-label>Date</mat-label>
-          <input matInput formControlName="fourthCtrl"   placeholder="Due date" [(ngModel)]="dateRendu" name="date" required>
+          <input matInput formControlName="fourthCtrl"   placeholder="Due date" [(ngModel)]="dateRendu" name="date" type="date" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -57,6 +57,7 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="onSubmit($event)">Submit</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

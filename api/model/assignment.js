@@ -4,6 +4,8 @@ let Schema = mongoose.Schema;
 let AssignmentSchema = Schema({
     id: Number,
     dateDeRendu: Date,
+    student: String,
+    course: String,
     nom: String,
     rendu: Boolean
 });
