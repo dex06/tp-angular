@@ -21,7 +21,8 @@ router.post('/register', function(req, res) {
     User.create({
       name : req.body.name,
       email : req.body.email,
-      password : hashedPassword
+      password : hashedPassword,
+      role: req.body.role
     },
     function (err, user) {
       if (err) return res.status(500).send("There was a problem registering the user.")
@@ -59,7 +60,7 @@ router.post('/login', function(req, res) {
         expiresIn: 86400 // expires in 24 hours
       });
       
-      res.status(200).send({ auth: true, token: token });
+      res.status(200).send({ auth: true, token: token, role: user.role });
     });
 });
 

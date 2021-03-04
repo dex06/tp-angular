@@ -31,10 +31,11 @@ import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StepperComponent } from './assignments/stepper/stepper.component';
 
+
 const routes:Routes = [
   {path:'', component:AssignmentsComponent},
   {path:'home', component:AssignmentsComponent},
-  {path:'add', component:AddAssignmentComponent},
+  {path:'add', component:StepperComponent},
   {path:'assignment/:id', component:AssignmentDetailComponent},
   {
     path:'assignment/:id/edit',
@@ -56,7 +57,7 @@ const routes:Routes = [
     StepperComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule,
+    BrowserModule, AppRoutingModule, 
     BrowserAnimationsModule, AngularMaterialModule ,MatButtonModule,
     MatIconModule, MatDividerModule, FlexLayoutModule,
     MatInputModule, MatFormFieldModule, ReactiveFormsModule,

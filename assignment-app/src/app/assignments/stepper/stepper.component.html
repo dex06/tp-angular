@@ -1,25 +1,49 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepLabel>Fill out your assignment title</ng-template>
         <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+          <mat-label>Assignment title</mat-label>
+          <input matInput placeholder="Assignment title" formControlName="firstCtrl" [(ngModel)]="nomAssignment" name="nom" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+    <mat-step [stepControl]="secondFormGroup" label="Fill out the student name">
       <form [formGroup]="secondFormGroup">
         <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
+          <mat-label>Student</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Student name"  [(ngModel)]="studentAssignment" name="student" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Fill out the course name">
+      <form [formGroup]="thirdFormGroup">
+        <mat-form-field>
+          <mat-label>Choose a course...</mat-label>
+          <mat-select formControlName="thirdCtrl" name="course" [(ngModel)]="courseAssignment" required>
+            <mat-option [value]="courses" *ngFor="let courses of Courses">{{courses}} 
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup" label="Fill out the due date">
+      <form [formGroup]="fourthFormGroup">
+        <mat-form-field>
+          <mat-label>Date</mat-label>
+          <input matInput formControlName="fourthCtrl"   placeholder="Due date" [(ngModel)]="dateRendu" name="date" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -36,4 +60,4 @@
       </div>
     </mat-step>
   </mat-horizontal-stepper>
-  
+</div>

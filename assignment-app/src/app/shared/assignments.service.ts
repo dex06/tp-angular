@@ -19,18 +19,24 @@ export class AssignmentsService {
       id:1,
       nom:"TP WebComponents INTENSE",
       dateDeRendu:new Date('2020-11-17'),
+      student:"Mat",
+      course:"JS",
       rendu:true
     },
     {
       id:2,
       nom:"TP Angular INTENSE",
       dateDeRendu:new Date('2020-12-03'),
+      student:"Joe",
+      course:"JS",
       rendu:false
     },
     {
       id:3,
       nom:"TP React INTENSE",
       dateDeRendu:new Date('2021-01-10'),
+      student:"David",
+      course:"JS",
       rendu:false
     },
   ];
