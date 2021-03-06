@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AssignmentsService } from '../../shared/assignments.service';
 import {Assignment} from '../assignment.model';
+import { Course } from '../course.model';
 
 
 /**
@@ -21,16 +22,17 @@ export class StepperComponent implements OnInit {
   fourthFormGroup: FormGroup;
 
   nouvelAssignment:Assignment;
-  nomAssignment="";
+  nomAssignment: string;
   studentAssignment: string
-  courseAssignment: string
+  courseAssignment: String
   dateRendu:Date;
 
-  Courses: any = ['Base de données', 'Angular', 'Anglais'];
 
 
   constructor(private _formBuilder: FormBuilder, private assignmentService:AssignmentsService, private router:Router) {}
 
+  Courses: any = this.assignmentService.getCoursesNames();
+  
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -54,11 +56,11 @@ export class StepperComponent implements OnInit {
 
     nouvelAssignment.id = this.assignmentService.getNewId();
     nouvelAssignment.nom = this.nomAssignment;
-    nouvelAssignment.student = this.studentAssignment
-    nouvelAssignment.course = this.courseAssignment
+    nouvelAssignment.student = this.studentAssignment;
     nouvelAssignment.dateDeRendu = this.dateRendu;
     nouvelAssignment.rendu = false;
-
+    nouvelAssignment.course = this.assignmentService.getCoursesDict()[`${this.courseAssignment}`];
+  
     //this.assignments.push(nouvelAssignment);
     // on envoie un événement appelé "nouvelAssignment" vers le père (ou autres..)
     //this.nouvelAssignment.emit(nouvelAssignment);

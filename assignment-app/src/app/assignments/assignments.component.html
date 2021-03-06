@@ -10,6 +10,24 @@
 
   <mat-list *ngFor="let assignment of assignments">
     <nav><a routerLink="/assignment/{{assignment.id}}">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ assignment.nom }}</mat-card-title>
+          <mat-card-subtitle>{{ assignment.course.teacher }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="" alt="Photo of teacher">
+        <mat-card-content>
+          <p>
+            {{ assignment.comments }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+      
         <h3 mat-subheader>Date de rendu {{assignment.dateDeRendu | date}}</h3>
         <mat-list-item >
           <p appRendu *ngIf="assignment.rendu; else nonsoumis">
