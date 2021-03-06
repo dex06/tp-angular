@@ -1,7 +1,7 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
-      <mat-card-header>
-        <mat-card-title>Register</mat-card-title>
+      <mat-card-header fxLayout="row" fxLayoutAlign="space-around center">
+        <mat-card-title class="register">Register</mat-card-title>
       </mat-card-header>
   
       <form ngForm class="example-form" #usersForm>
@@ -28,9 +28,10 @@
           </mat-form-field>
   
         </mat-card-content>
-  
-        <button mat-stroked-button color="accent" class="btn-block" (click)="onSubmit($event)">Register</button>
-  
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <button mat-stroked-button color="accent" class="btn-block" (click)="onSubmit($event)">Register</button>
+        </div>
+
       </form>
     </mat-card>
   </div>

@@ -1,17 +1,29 @@
 <!-- Toolbar -->
 <mat-toolbar color="primary" class="app-header">
   <div></div>
-  <span class="nav-tool-items">
-    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+  <div class="home">
+    <a mat-button routerLink="home" routerLinkActive="active">Home</a>
+  
+
+   
+  </div>
+  <div class="title"> <h1>{{titre}}</h1></div>
+
+  <div class="params"><p *ngIf="params.isLogged">{{ params.userRole }} : {{ params.userName }} </p></div>
+  <div class="log">
+
+    
+    <a mat-button routerLink="login" routerLinkActive="active" *ngIf="!params.isLogged; else nonlog">Log in</a>
+    <ng-template #nonlog>
+      <a mat-button (click)="unlog()">Disconnect</a>
+    </ng-template>
+   
     <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
-  </span>
+  </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
 
-
-<h1><a routerLink="/home">{{titre}}</a></h1>
-<mat-slide-toggle color="primary" (click)="login()">Login</mat-slide-toggle>
 <!--
   On va afficher le composant qui correspond à l'url courant (à la route)
 -->

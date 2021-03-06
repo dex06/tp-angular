@@ -15,8 +15,13 @@ export class UsersService {
         private http:HttpClient) { }
 
     
+
     addUri = "http://localhost:8010/api/auth/register";
     loginUri= "http://localhost:8010/api/auth/login";
+
+    userName="";
+    userRole="";
+    isLog = false;
 
     getNewId():number {
         return Math.floor((Math.random()*100000));
@@ -34,8 +39,36 @@ export class UsersService {
     }
 
     loginUser(user:Users):Observable<any>{
-        console.log(user)
+        //console.log(user)
         return this.http.post(this.loginUri, user);
     }
+
+
+    getUserRole(){
+        return this.userRole;
+    }
+
+    setUserRole(role){
+        this.userRole = role;
+    }
+
+    getUserName(){
+        return this.userName;
+    }
+
+    setUserName(name){
+        this.userName = name;
+    }
+
+    getLogged(){
+        return this.isLog;
+    }
+
+    setLogged(bool){
+        this.isLog = bool;
+    }
+
+   
+
     
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service'
 import { UsersService } from '../../shared/users.service'
 import {Users} from '../users.model';
+import { VariablesGlobales } from '../../shared/VariablesGlobales';
 
 
 @Component({
@@ -12,9 +13,10 @@ import {Users} from '../users.model';
 })
 export class LogInComponent implements OnInit {
 
-  constructor(private userService:UsersService, private authService: AuthService, private router:Router) { }
+  constructor(private userService:UsersService, private authService: AuthService, private params: VariablesGlobales, private router:Router) { }
 
   ngOnInit(): void {
+    console.log(this.params.userName)
   }
 
   userEmail:string
@@ -34,6 +36,13 @@ export class LogInComponent implements OnInit {
         console.log(message);
         if(message.auth == true) {
           this.authService.logIn();
+          this.userService.setUserRole(message.role);
+          this.userService.setUserName(message.name);
+          this.userService.setLogged(true);
+          this.params.isLogged = true;
+          this.params.userName = message.name;
+          this.params.userRole = message.role;
+
           this.router.navigate(['home']);
         }
         else this.router.navigate(['login']);

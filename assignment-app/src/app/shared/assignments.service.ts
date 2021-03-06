@@ -86,7 +86,7 @@ export class AssignmentsService {
     return this.http.get<Assignment[]>(this.uri)
     .pipe(map(liste => {
       liste.forEach(elem => {
-          elem.nom += " MODIFIE DANS LE PIPE / MAP";
+          //elem.nom += " MODIFIE DANS LE PIPE / MAP";
       });
       return liste;
     }));

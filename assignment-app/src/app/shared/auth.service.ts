@@ -22,7 +22,8 @@ export class AuthService {
         resolve(this.loggedIn);
       }
     );
-
     return isUserAdmin;
   }
+
+  
 }

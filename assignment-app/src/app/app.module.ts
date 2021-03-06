@@ -30,6 +30,7 @@ import { RegisterComponent } from './users/register/register.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StepperComponent } from './assignments/stepper/stepper.component';
+import { VariablesGlobales } from './shared/VariablesGlobales';
 
 
 const routes:Routes = [
@@ -67,7 +68,9 @@ const routes:Routes = [
     FormsModule, HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    VariablesGlobales
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
