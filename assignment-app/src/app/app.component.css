@@ -23,14 +23,18 @@
 .title {
     grid-column: 4 / 6;
     grid-row: 1;
+    text-align: center;
 }
 
 .params {
     grid-column: 7;
     grid-row: 1;
+    text-align: center;
+    margin-top: 15px;
 }
 
 .log {
     grid-column: 8 / 8;
     grid-row: 1;
+    text-align: end;
 }

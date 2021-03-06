@@ -20,10 +20,8 @@ export class AppComponent {
  
 
 
-  titre = 'Application de gestion des devoirs (Assignments)';
+  titre = 'Application de gestion des devoirs';
   constructor(private authService: AuthService, private userService: UsersService, public params: VariablesGlobales, private router:Router) {}
-
-
 
 
   isLogged(){
