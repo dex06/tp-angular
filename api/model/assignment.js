@@ -10,7 +10,7 @@ let AssignmentSchema = Schema({
     course: Object,
     nom: String,
     rendu: Boolean,
-    mark: Number,
+    grade: Number,
     comments: String
 });
 

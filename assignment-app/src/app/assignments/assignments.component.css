@@ -1,5 +1,5 @@
 .rendu {
-  color:green;
+  
   
   padding:2px;
   grid-column: 1 / 2;
@@ -7,7 +7,7 @@
 }
 
 .nonRendu {
-  color:red;
+
   
   padding:2px;
   background-color:yellow;

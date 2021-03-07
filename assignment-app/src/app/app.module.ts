@@ -31,6 +31,10 @@ import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StepperComponent } from './assignments/stepper/stepper.component';
 import { VariablesGlobales } from './shared/VariablesGlobales';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AssignmentDialogComponent } from './assignments/assignment-dialog/assignment-dialog.component';
+import { AssignmentModifyComponent } from './assignments/assignment-modify/assignment-modify.component';
+
 
 
 const routes:Routes = [
@@ -55,10 +59,12 @@ const routes:Routes = [
     EditAssignmentComponent,
     LogInComponent,
     RegisterComponent,
-    StepperComponent
+    StepperComponent,
+    AssignmentDialogComponent,
+    AssignmentModifyComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule, 
+    BrowserModule, AppRoutingModule, MatDialogModule,
     BrowserAnimationsModule, AngularMaterialModule ,MatButtonModule,
     MatIconModule, MatDividerModule, FlexLayoutModule,
     MatInputModule, MatFormFieldModule, ReactiveFormsModule,

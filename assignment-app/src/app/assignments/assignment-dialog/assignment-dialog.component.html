@@ -1,0 +1,42 @@
+
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center">
+    <mat-card class="box">
+        <h2 mat-dialog-title>Details</h2>
+
+        <mat-dialog-content>
+            <mat-label><b>Assignment title</b></mat-label>
+            <p>{{ data.assignment.nom }}</p>
+            <mat-label><b>Student name</b></mat-label>
+            <p>{{ data.assignment.student }}</p>
+            <mat-label><b>Date</b></mat-label>
+            <p>{{ data.assignment.dateDeRendu }}</p>
+            <mat-label><b>Course</b></mat-label>
+            <p>{{ data.assignment.course.title }}</p>
+            <mat-label><b>Course teacher</b></mat-label>
+            <p>{{ data.assignment.course.teacher }}</p>
+            
+            <mat-label><b>Rendu</b></mat-label>
+            <p *ngIf="data.assignment.rendu">Yes</p>
+            <p *ngIf="!data.assignment.rendu">No</p>
+            <div></div>
+           
+            <!--
+            <p>
+                <mat-form-field *ngIf="data.assignement.rendu">
+                    <mat-label>Comments</mat-label>
+                    <input placeholder="{{ data.assignment.comments }}" name="comments" type="text"/>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field *ngIf="data.assignment.rendu">
+                    <mat-label>Grade</mat-label>
+                    <input placeholder="{{ data.assignment.grade}}"/>
+                </mat-form-field>
+            </p>
+        -->
+        </mat-dialog-content>
+
+        
+    </mat-card>
+</div>
+

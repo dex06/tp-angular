@@ -33,7 +33,7 @@ export class LogInComponent implements OnInit {
 
     this.userService.loginUser(loginUser)
       .subscribe(message => {
-        console.log(message);
+      
         if(message.auth == true) {
           this.authService.logIn();
           this.userService.setUserRole(message.role);
@@ -42,6 +42,7 @@ export class LogInComponent implements OnInit {
           this.params.isLogged = true;
           this.params.userName = message.name;
           this.params.userRole = message.role;
+          
 
           this.router.navigate(['home']);
         }

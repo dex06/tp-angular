@@ -1,0 +1,72 @@
+
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center">
+    <mat-card class="box">
+        <h2 mat-dialog-title>Modify</h2>
+
+        <mat-dialog-content>
+            <p>
+                <mat-form-field>
+                    <mat-label>Assignment title</mat-label>
+                    <input matInput placeholder="{{ data.assignment.nom }}" [(ngModel)]="title"/>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Student name</mat-label>
+                    <input matInput placeholder="{{ data.assignment.student }}" [(ngModel)]="student"/>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>{{ data.assignment.course.title }}</mat-label>
+                    <mat-select [(ngModel)]="course" required>
+                    <mat-option [value]="courses" *ngFor="let courses of data.coursesName">{{courses}} 
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Date</mat-label>
+                    <input matInput placeholder="{{ data.assignment.dateDeRendu }}" name="date" type="date" [(ngModel)]="date" required/>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-label>Rendu</mat-label>
+            </p>
+            <p>
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" *ngIf="!data.assignment.rendu" [(ngModel)]="rendu">
+                    <mat-button-toggle value=true >Yes</mat-button-toggle>
+                    <mat-button-toggle value="" checked>No</mat-button-toggle>
+                </mat-button-toggle-group>   
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style" *ngIf="data.assignment.rendu" [(ngModel)]="rendu">
+                    <mat-button-toggle value=true checked>Yes</mat-button-toggle>
+                    <mat-button-toggle value="">No</mat-button-toggle>
+                </mat-button-toggle-group>                 
+            </p>
+            
+            <p>
+                <mat-form-field *ngIf="data.assignment.rendu">
+                    <mat-label>Comments</mat-label>
+                    <input placeholder="{{ data.assignment.comments }}" name="comments" type="text"[(ngModel)]="comments"/>
+                </mat-form-field>
+            </p>
+            <!--
+            <p>
+                <mat-form-field *ngIf="data.assignment.rendu">
+                    <mat-label>Grade</mat-label>
+                    <input placeholder="{{ data.assignment.grade }}" type="number" [(ngModel)]="grade"/>
+                </mat-form-field>
+            </p>
+            -->
+            
+        </mat-dialog-content>
+
+        <mat-dialog-actions>
+            <button class="mat-raised-button" [mat-dialog-close]="true">Close</button>
+            <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+        </mat-dialog-actions>
+        
+    </mat-card>
+</div>
+

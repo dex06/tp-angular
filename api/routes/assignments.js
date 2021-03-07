@@ -30,6 +30,8 @@ function postAssignment(req, res){
     assignment.course = req.body.course;
     assignment.dateDeRendu = req.body.dateDeRendu;
     assignment.rendu = req.body.rendu;
+    assignment.comments = "";
+    assignment.grade = -1;
     
 
     console.log("POST assignment reçu :");
@@ -62,7 +64,7 @@ function updateAssignment(req, res) {
 
 // suppression d'un assignment (DELETE)
 function deleteAssignment(req, res) {
-
+    console.log("deleting assignment" + req.body._id)
     Assignment.findByIdAndRemove(req.params.id, (err, assignment) => {
         if (err) {
             res.send(err);

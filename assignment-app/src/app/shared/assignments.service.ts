@@ -55,8 +55,8 @@ export class AssignmentsService {
       student:"Mat Léchec",
       rendu:true,
       course: this.courses_dict['Angular'],
-      mark: 13,
-      comments: "Pas mal mais peut mieux faire."
+      comments: "Pas mal mais peut mieux faire.",
+      grade: 13,
     },
     {
       id:2,
@@ -65,8 +65,8 @@ export class AssignmentsService {
       student:"Joe Mosquitto",
       rendu:false,
       course: this.courses_dict['Prospective et futurologie'],
-      mark: null,
-      comments: null
+      comments: null,
+      grade: null,
     },
     {
       id:3,
@@ -75,8 +75,8 @@ export class AssignmentsService {
       student:"David",
       rendu:false,
       course: this.courses_dict['Big Data'],
-      mark: null,
-      comments: null
+      comments: null,
+      grade: null,
     },
   ];
 
@@ -143,12 +143,7 @@ export class AssignmentsService {
     });*/
     this.logginService.log(assignment.nom, "modifié");
 
-    /*
-    let pos = this.assignments.indexOf(assignment);
-    this.assignments[pos] = assignment;
-    */
-
-    //return of("assignmentt modifié");
+    
     return this.http.put(this.uri, assignment);
   }
 
@@ -162,6 +157,7 @@ export class AssignmentsService {
     // est celui que nous générons manuellement.... on aurait pu se passer,
     // en fait, de id si on était partis directement sur mongoDB...
     let deleteURI = this.uri + '/' + assignment._id;
+    console.log(deleteURI);
     return this.http.delete(deleteURI);
   }
 

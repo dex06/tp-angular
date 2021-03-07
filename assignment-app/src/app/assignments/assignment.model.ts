@@ -8,6 +8,6 @@ export class Assignment {
   dateDeRendu:Date;
   rendu:boolean;
   course: Course;
-  mark: number;
   comments: string;
+  grade: number;
 }
