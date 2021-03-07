@@ -33,17 +33,23 @@
                 <mat-card-subtitle class="course-subtitle">{{ assignment.course.teacher }}</mat-card-subtitle>   
               </mat-card-content>
               <mat-card-actions class="assignment-buttons">
-                <button mat-button *ngIf="isAdmin()" (click)="openModifyDialog(assignment)">Modify</button>
-                <button mat-button (click)="openDetailsDialog(assignment)">Details</button>
-                <button mat-button *ngIf="isAdmin()" (click)="deleteAssignment(assignment)">Delete</button>
+                <button mat-button-raised *ngIf="isAdmin()" (click)="openModifyDialog(assignment)">Modify</button>
+                <button mat-button-raised (click)="openDetailsDialog(assignment)">Details</button>
+                <button mat-button-raised class="delete" *ngIf="isAdmin()" (click)="deleteAssignment(assignment)">Delete</button>
+                
               </mat-card-actions>
+              <mat-card-actions class="toggleRendu">
+                <p><b>Rendre </b></p>
+                <mat-slide-toggle (click)="changeRendu(assignment)"></mat-slide-toggle></mat-card-actions>
             </mat-card>
       </mat-list>
     </div>
 
     <div class="nonrendu">
+      <div>
       <h1 class="list-title">Devoirs rendus</h1>
       <hr color="black" width="80%" size="5" align="center">
+      </div>
       <mat-list *ngFor="let assignment of assignments">
         <mat-card  class="example-card" *ngIf="assignment.rendu">
           
@@ -64,9 +70,10 @@
               <mat-card-subtitle class="course-subtitle">{{ assignment.course.teacher }}</mat-card-subtitle>   
             </mat-card-content>
             <mat-card-actions class="assignment-buttons">
-              <button mat-button *ngIf="params.userRole=='Admin'" (click)="openModifyDialog(assignment)">Modify</button>
-              <button mat-button (click)="openDetailsDialog(assignment)">Details</button>
-              <button mat-button *ngIf="params.userRole=='Admin'" (click)="deleteAssignment(assignment)">Delete</button>
+              <button mat-button-raised *ngIf="params.userRole=='Admin'" (click)="openModifyDialog(assignment)">Modify</button>
+              <button mat-button-raised (click)="openDetailsDialog(assignment)">Details</button>
+              <button mat-button-raised class="delete" *ngIf="params.userRole=='Admin'" (click)="deleteAssignment(assignment)">Delete</button>
+              
 
             </mat-card-actions>
           </mat-card>

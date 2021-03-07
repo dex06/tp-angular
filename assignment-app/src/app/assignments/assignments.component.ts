@@ -72,4 +72,8 @@ export class AssignmentsComponent implements OnInit {
       }
     });
   }
+
+  changeRendu(assignment){
+    assignment.rendu = !assignment.rendu;
+  }
 }
