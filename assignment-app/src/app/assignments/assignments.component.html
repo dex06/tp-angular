@@ -1,32 +1,76 @@
 <main class="container">
-  <nav>
+  <nav class="add-assignment">
     <a routerLink="/add">
       <button mat-flat-button class="ajouterBtn" color="accent">
         Ajouter un devoir
       </button>
-      <button mat-flat-button class="ajouterBtn" color="accent">
-        Peupler BD
-      </button>
     </a>
   </nav>
-
-  <mat-list *ngFor="let assignment of assignments">
-      <mat-card  class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar src="{{ assignment.course.course_src }}"></div>
-          <mat-card-title>{{ assignment.nom }}</mat-card-title>
-          <mat-card-subtitle>{{ assignment.course.teacher }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <img mat-card-image src="{{ assignment.course.teacher_src }}" alt="Photo of {{ assignment.course.teacher }}">    
-        </mat-card-content>
-    
-        <mat-card-actions>
-          <button mat-button (click)="showDetails(assignment.id)">Modify</button>
-        </mat-card-actions>
-      </mat-card>
-  </mat-list>
   
+  <div class="lists">
+    <div class="rendu">
+      <div>
+      <h1 class="list-title">Devoirs non rendus</h1>
+      <hr color="black" width="80%" size="5" align="center">
+      </div>
+      <mat-list *ngFor="let assignment of assignments">
+          <mat-card  class="example-card">
+            
+            
+              <mat-card-content class="img-course">
+                <mat-card-title class="course-title">{{ assignment.nom }}</mat-card-title>
+                <img mat-card-img src="{{ assignment.course.course_src }}"/>
+              </mat-card-content>
+              
+              <mat-card-content class="student">
+                <h2>Assigned to student : </h2>
+                <h2>{{ assignment.student }}</h2>
+                
+              </mat-card-content>
+
+              <mat-card-content class="img-teacher">
+                <img mat-card-image src="{{ assignment.course.teacher_src }}" alt="Photo of {{ assignment.course.teacher }}"> 
+                <mat-card-subtitle class="course-subtitle">{{ assignment.course.teacher }}</mat-card-subtitle>   
+              </mat-card-content>
+              <mat-card-actions class="assignment-buttons">
+                <button mat-button (click)="showDetails(assignment.id)">Modify</button>
+                <button mat-button (click)="showDetails(assignment.id)">Details</button>
+              </mat-card-actions>
+            </mat-card>
+      </mat-list>
+    </div>
+
+    <div class="nonrendu">
+      <h1 class="list-title">Devoirs rendus</h1>
+      <hr color="black" width="80%" size="5" align="center">
+      <mat-list *ngFor="let assignment of assignments">
+        <mat-card  class="example-card">
+          
+          
+            <mat-card-content class="img-course">
+              <mat-card-title class="course-title">{{ assignment.nom }}</mat-card-title>
+              <img mat-card-img src="{{ assignment.course.course_src }}"/>
+            </mat-card-content>
+            
+            <mat-card-content class="student">
+              <h2>Assigned to student : </h2>
+              <h2>{{ assignment.student }}</h2>
+              
+            </mat-card-content>
+
+            <mat-card-content class="img-teacher">
+              <img mat-card-image src="{{ assignment.course.teacher_src }}" alt="Photo of {{ assignment.course.teacher }}"> 
+              <mat-card-subtitle class="course-subtitle">{{ assignment.course.teacher }}</mat-card-subtitle>   
+            </mat-card-content>
+            <mat-card-actions class="assignment-buttons">
+              <button mat-button (click)="showDetails(assignment.id)">Modify</button>
+              <button mat-button (click)="showDetails(assignment.id)">Details</button>
+            </mat-card-actions>
+          </mat-card>
+    </mat-list>
+
+    </div>
+  </div>
   
   <!-- 
   <mat-list *ngFor="let assignment of assignments">

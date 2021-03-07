@@ -17,7 +17,7 @@
     
     <a mat-button routerLink="login" routerLinkActive="active" *ngIf="!params.isLogged; else nonlog">Log in</a>
     <ng-template #nonlog>
-      <a mat-button (click)="unlog()">Disconnect</a>
+      <a mat-button class="red" (click)="unlog()">Disconnect</a>
     </ng-template>
    
     <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>

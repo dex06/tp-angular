@@ -34,7 +34,7 @@ export class AssignmentsService {
       id:3,
       title:"Prospective et futurologie",
       teacher:"Serge Miranda",
-      teacher_src: "https://www.fratmat.info/media/k2/items/cache/https://pbs.twimg.com/profile_images/1853518718/image.jpg",
+      teacher_src: "https://d3istkvxa9aegd.cloudfront.net/media/filer_public_thumbnails/filer_public/f1/25/f1254340-9e46-4fd2-8d68-e4e821b95ad8/sergepresentation.png__200x200_q85_crop_subsampling-2_upscale.png",
       course_src:"https://assets.letemps.ch/sites/default/files/styles/share/public/media/2018/04/26/file6zom7ccajrmhi868kou.jpg.jpeg?itok=49r6sanW"
     }
   ]
