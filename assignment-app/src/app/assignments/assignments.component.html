@@ -25,7 +25,8 @@
               <mat-card-content class="student">
                 <h2>Assigned to student : </h2>
                 <h2>{{ assignment.student }}</h2>
-                
+                <h2 class="toggleRendu">Turn over </h2>
+                <mat-slide-toggle (click)="changeRendu(assignment)"></mat-slide-toggle>
               </mat-card-content>
 
               <mat-card-content class="img-teacher">
@@ -38,9 +39,7 @@
                 <button mat-button-raised class="delete" *ngIf="isAdmin()" (click)="deleteAssignment(assignment)">Delete</button>
                 
               </mat-card-actions>
-              <mat-card-actions class="toggleRendu">
-                <p><b>Rendre </b></p>
-                <mat-slide-toggle (click)="changeRendu(assignment)"></mat-slide-toggle></mat-card-actions>
+              
             </mat-card>
       </mat-list>
     </div>
@@ -62,7 +61,10 @@
             <mat-card-content class="student">
               <h2>Assigned to student : </h2>
               <h2>{{ assignment.student }}</h2>
-              
+              <div *ngIf="assignment.comments!=''">
+                <mat-label><h2>Comments:</h2></mat-label>
+                <p>{{ assignment.comments }}</p>
+              </div>
             </mat-card-content>
 
             <mat-card-content class="img-teacher">
@@ -73,9 +75,13 @@
               <button mat-button-raised *ngIf="params.userRole=='Admin'" (click)="openModifyDialog(assignment)">Modify</button>
               <button mat-button-raised (click)="openDetailsDialog(assignment)">Details</button>
               <button mat-button-raised class="delete" *ngIf="params.userRole=='Admin'" (click)="deleteAssignment(assignment)">Delete</button>
-              
-
+              <button mat-button-raised class="grade" *ngIf="params.userRole=='Admin'" (click)="gradeAssignment(assignment)">Grade</button>
             </mat-card-actions>
+            
+            <mat-card-content *ngIf="assignment.grade!=-1">
+              <mat-label><h2>Grade:</h2></mat-label>
+              <p>{{ assignment.grade }} / 20</p>
+            </mat-card-content>
           </mat-card>
     </mat-list>
 

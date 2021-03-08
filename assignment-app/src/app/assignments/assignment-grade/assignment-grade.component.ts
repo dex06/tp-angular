@@ -4,11 +4,11 @@ import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
 
 @Component({
-  selector: 'app-assignment-modify',
-  templateUrl: './assignment-modify.component.html',
-  styleUrls: ['./assignment-modify.component.css']
+  selector: 'app-assignment-grade',
+  templateUrl: './assignment-grade.component.html',
+  styleUrls: ['./assignment-grade.component.css']
 })
-export class AssignmentModifyComponent implements OnInit {
+export class AssignmentGradeComponent implements OnInit {
 
   _id: string
   title: string
@@ -18,7 +18,7 @@ export class AssignmentModifyComponent implements OnInit {
   rendu: boolean
   comments: string
   grade: number
-  newAssignment: Assignment
+  
 
   constructor(public dialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private assignmentService: AssignmentsService) { }
 
@@ -34,6 +34,7 @@ export class AssignmentModifyComponent implements OnInit {
     this.grade = this.data.assignment.grade;
   }
 
+
   save(){
     let newAssignment: Assignment = 
     {
@@ -47,6 +48,7 @@ export class AssignmentModifyComponent implements OnInit {
       comments: this.comments,
       grade: this.grade,
     }
+    console.log(newAssignment);
     this.assignmentService.updateAssignment(newAssignment).subscribe(() => console.log("assignment updated"));
   }
 

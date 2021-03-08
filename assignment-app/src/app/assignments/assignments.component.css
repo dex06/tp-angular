@@ -101,8 +101,7 @@ mat-card img{
 }
 
 .toggleRendu {
-  grid-column: 3 / 3;
-  grid-row: 2;
+  color:teal;
   text-align: center;
 }
 

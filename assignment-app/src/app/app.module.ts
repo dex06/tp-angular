@@ -34,6 +34,8 @@ import { VariablesGlobales } from './shared/VariablesGlobales';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AssignmentDialogComponent } from './assignments/assignment-dialog/assignment-dialog.component';
 import { AssignmentModifyComponent } from './assignments/assignment-modify/assignment-modify.component';
+import { AssignmentGradeComponent } from './assignments/assignment-grade/assignment-grade.component';
+
 
 
 
@@ -61,7 +63,8 @@ const routes:Routes = [
     RegisterComponent,
     StepperComponent,
     AssignmentDialogComponent,
-    AssignmentModifyComponent
+    AssignmentModifyComponent,
+    AssignmentGradeComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, MatDialogModule,

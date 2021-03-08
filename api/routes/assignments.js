@@ -54,10 +54,11 @@ function updateAssignment(req, res) {
             console.log(err);
             res.send(err)
         } else {
+           
           res.json({message: 'updated'})
         }
 
-      // console.log('updated ', assignment)
+      console.log('updated ', assignment)
     });
 
 }

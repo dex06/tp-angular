@@ -7,6 +7,9 @@ import { VariablesGlobales } from '../shared/VariablesGlobales';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AssignmentDialogComponent } from './assignment-dialog/assignment-dialog.component';
 import { AssignmentModifyComponent } from './assignment-modify/assignment-modify.component';
+import { AssignmentGradeComponent } from './assignment-grade/assignment-grade.component';
+
+
 
 @Component({
   selector: 'app-assignments',
@@ -44,7 +47,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   deleteAssignment(id){
-    this.assignmentService.deleteAssignment(id);
+    this.assignmentService.deleteAssignment(id).subscribe(() => console.log("user deleted"));
   }
 
   showDetails(id){
@@ -75,5 +78,17 @@ export class AssignmentsComponent implements OnInit {
 
   changeRendu(assignment){
     assignment.rendu = !assignment.rendu;
+    this.assignmentService.updateAssignment(assignment);
+  }
+
+  gradeAssignment(assignment){
+    this.dialog.open(AssignmentGradeComponent, { 
+      width: '600px',data: { assignment : assignment },
+    }).afterClosed().subscribe(data => {
+      console.log(data)
+      if(data) {
+        console.log(data)
+      }
+    });
   }
 }

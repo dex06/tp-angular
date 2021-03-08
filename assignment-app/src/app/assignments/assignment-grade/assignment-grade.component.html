@@ -1,0 +1,29 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center">
+    <mat-card class="box">
+        <h2 mat-dialog-title>Grade</h2>
+
+        <mat-dialog-content>
+            
+        <p>
+            <mat-form-field>
+                <mat-label>Comments</mat-label>
+                <input matInput placeholder="{{ data.assignment.comments }}" type="text"[(ngModel)]="comments"/>
+            </mat-form-field>
+        </p>
+
+
+        <p>
+            <mat-form-field>
+                <mat-label>Grade</mat-label>
+                <input matInput type="number" [(ngModel)]="grade" required/>
+            </mat-form-field>
+        </p>
+        
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button class="mat-raised-button" [mat-dialog-close]="true">Close</button>
+            <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+        </mat-dialog-actions>
+
+    </mat-card>
+</div>
