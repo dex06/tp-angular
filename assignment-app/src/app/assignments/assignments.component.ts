@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, AfterViewInit, AfterViewChecked, OnChanges } from '@angular/core';
+import { Component, OnInit, Inject, AfterContentInit, OnChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AssignmentsService } from '../shared/assignments.service';
 import {Assignment} from './assignment.model';
@@ -19,26 +19,25 @@ import { AssignmentGradeComponent } from './assignment-grade/assignment-grade.co
 })
 
 
-export class AssignmentsComponent implements OnInit, OnChanges{
+export class AssignmentsComponent implements OnInit{
 
   assignments:Assignment[];
-  isEmpty = true;
+  isEmpty: boolean;
   
   constructor(private assignmentService:AssignmentsService, public params:VariablesGlobales, public dialog: MatDialog, private router:Router, @Inject(DOCUMENT) private _document: Document) { }
 
   ngOnInit(): void {
-    this.getAssignments()
+    this.getAssignments();
   }
-  ngOnChanges(): void {
-    if(this.assignments.length) this.isEmpty = false;
-  }
+
 
   getAssignments() {
     this.assignmentService.getAssignments()
       .subscribe((assignments) => {
         this.assignments = assignments
-      });
-      
+        console.log(this.assignments.length)
+        this.isEmpty = this.assignments.length < 1 ? true : false;
+      });   
   }
 
   isAdmin(){
@@ -113,4 +112,5 @@ export class AssignmentsComponent implements OnInit, OnChanges{
     this.assignmentService.populateBD();
     //this.reloadCurrentRoute();
   }
+  
 }
