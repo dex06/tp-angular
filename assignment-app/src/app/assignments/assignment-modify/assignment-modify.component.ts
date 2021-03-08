@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignment-modify',
@@ -20,7 +22,7 @@ export class AssignmentModifyComponent implements OnInit {
   grade: number
   newAssignment: Assignment
 
-  constructor(public dialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private assignmentService: AssignmentsService) { }
+  constructor(public dialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private assignmentService: AssignmentsService,@Inject(DOCUMENT) private _document: Document, private router:Router) { }
 
 
   ngOnInit(): void {
@@ -47,7 +49,16 @@ export class AssignmentModifyComponent implements OnInit {
       comments: this.comments,
       grade: this.grade,
     }
-    this.assignmentService.updateAssignment(newAssignment).subscribe(() => console.log("assignment updated"));
+    this.assignmentService.updateAssignment(newAssignment).subscribe(() => {console.log("assignment updated"); this.reloadCurrentRoute()});
+  }
+  refreshRoute(){
+    this._document.defaultView.location.reload();
+  }
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
   }
 
 }

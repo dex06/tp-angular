@@ -1,4 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
@@ -20,7 +22,7 @@ export class AssignmentGradeComponent implements OnInit {
   grade: number
   
 
-  constructor(public dialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private assignmentService: AssignmentsService) { }
+  constructor(public dialog:MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private assignmentService: AssignmentsService, @Inject(DOCUMENT) private _document: Document, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -49,7 +51,18 @@ export class AssignmentGradeComponent implements OnInit {
       grade: this.grade,
     }
     console.log(newAssignment);
-    this.assignmentService.updateAssignment(newAssignment).subscribe(() => console.log("assignment updated"));
+    this.assignmentService.updateAssignment(newAssignment).subscribe(() => {console.log("assignment updated"); this.reloadCurrentRoute()});
+  }
+
+  refreshRoute(){
+    this._document.defaultView.location.reload();
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
   }
 
 }

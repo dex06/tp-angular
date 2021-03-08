@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { AssignmentsService } from '../shared/assignments.service';
 import {Assignment} from './assignment.model';
 import { Course } from './course.model';
@@ -22,7 +23,7 @@ export class AssignmentsComponent implements OnInit {
 
   assignments:Assignment[];
   
-  constructor(private assignmentService:AssignmentsService, public params:VariablesGlobales, public dialog: MatDialog, private router:Router) { }
+  constructor(private assignmentService:AssignmentsService, public params:VariablesGlobales, public dialog: MatDialog, private router:Router, @Inject(DOCUMENT) private _document: Document) { }
 
   ngOnInit(): void {
     this.getAssignments();
@@ -47,7 +48,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   deleteAssignment(id){
-    this.assignmentService.deleteAssignment(id).subscribe(() => console.log("user deleted"));
+    this.assignmentService.deleteAssignment(id).subscribe(() => {console.log("user deleted"); this.reloadCurrentRoute()});
   }
 
   showDetails(id){
@@ -89,6 +90,18 @@ export class AssignmentsComponent implements OnInit {
       if(data) {
         console.log(data)
       }
+    });
+  }
+
+  refreshRoute(){
+    this._document.defaultView.location.reload();
+
+  }
+  
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
     });
   }
 }
