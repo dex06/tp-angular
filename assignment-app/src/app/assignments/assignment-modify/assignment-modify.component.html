@@ -28,7 +28,7 @@
             <p>
                 <mat-form-field>
                     <mat-label>Date</mat-label>
-                    <input matInput placeholder="{{ data.assignment.dateDeRendu }}" name="date" type="date" [(ngModel)]="date" required/>
+                    <input matInput placeholder="{{ data.assignment.dateDeRendu  | date }}" name="date" type="date" [(ngModel)]="date" required/>
                 </mat-form-field>
             </p>
             <p>
