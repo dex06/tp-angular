@@ -5,6 +5,7 @@ import {Observable, of} from 'rxjs';
 import { LoggingService } from './logging.service';
 import { HttpClient } from '@angular/common/http';
 import {map, tap, catchError} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   // permet d'éviter de l'ajouter dans les modules....
@@ -13,7 +14,7 @@ import {map, tap, catchError} from 'rxjs/operators';
 export class AssignmentsService {
 
   constructor(private logginService:LoggingService,
-              private http:HttpClient) { }
+              private http:HttpClient, private router:Router) { }
 
   courses:Course[] = [
     {
@@ -176,6 +177,20 @@ export class AssignmentsService {
   getCoursesDict(){
     return this.courses_dict;
   }
+
+  populateBD(){
+    this.assignments.forEach(assignment => {
+      let newAssignment: Assignment = assignment;
+      this.addAssignment(newAssignment).subscribe(() => {console.log("populated database"); this.reloadCurrentRoute()});;
+    })
+  }
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+  }
+
 
   
 }

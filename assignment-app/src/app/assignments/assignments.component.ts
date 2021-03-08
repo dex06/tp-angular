@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewInit, AfterViewChecked, OnChanges } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AssignmentsService } from '../shared/assignments.service';
 import {Assignment} from './assignment.model';
@@ -19,14 +19,18 @@ import { AssignmentGradeComponent } from './assignment-grade/assignment-grade.co
 })
 
 
-export class AssignmentsComponent implements OnInit {
+export class AssignmentsComponent implements OnInit, OnChanges{
 
   assignments:Assignment[];
+  isEmpty = true;
   
   constructor(private assignmentService:AssignmentsService, public params:VariablesGlobales, public dialog: MatDialog, private router:Router, @Inject(DOCUMENT) private _document: Document) { }
 
   ngOnInit(): void {
-    this.getAssignments();
+    this.getAssignments()
+  }
+  ngOnChanges(): void {
+    if(this.assignments.length) this.isEmpty = false;
   }
 
   getAssignments() {
@@ -34,7 +38,7 @@ export class AssignmentsComponent implements OnInit {
       .subscribe((assignments) => {
         this.assignments = assignments
       });
-    
+      
   }
 
   isAdmin(){
@@ -79,7 +83,7 @@ export class AssignmentsComponent implements OnInit {
 
   changeRendu(assignment){
     assignment.rendu = !assignment.rendu;
-    this.assignmentService.updateAssignment(assignment);
+    this.assignmentService.updateAssignment(assignment).subscribe(() => console.log("Assignment turned in!"));
   }
 
   gradeAssignment(assignment){
@@ -103,5 +107,10 @@ export class AssignmentsComponent implements OnInit {
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
         this.router.navigate([currentUrl]);
     });
+  }
+
+  populateBD(){
+    this.assignmentService.populateBD();
+    //this.reloadCurrentRoute();
   }
 }

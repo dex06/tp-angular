@@ -1,4 +1,6 @@
 <main class="container">
+  <div class="upperButtons" fxLayout="row" fxLayoutAlign="center center">
+  
   <nav class="add-assignment">
     <a routerLink="/add">
       <button mat-flat-button class="ajouterBtn" color="accent" *ngIf="hasStatus()">
@@ -6,6 +8,12 @@
       </button>
     </a>
   </nav>
+
+  <button mat-flat-button class="populateBtn" color="accent" *ngIf="isEmpty" (click)="populateBD()">
+    Populer la BD
+  </button>
+
+</div>
   
   <div class="lists">
     <div class="rendu">
@@ -67,7 +75,7 @@
               <h3>{{ assignment.student }}</h3>
               <h2>Turned in date : </h2>
               <h3>{{ assignment.dateDeRendu | date }}</h3>
-              <div *ngIf="assignment.comments!=''">
+              <div *ngIf="assignment.comments!=undefined">
                 <mat-label><h2>Comments:</h2></mat-label>
                 <p>{{ assignment.comments }}</p>
               </div>
@@ -84,7 +92,7 @@
               <button mat-button-raised class="grade" *ngIf="params.userRole=='Admin'" (click)="gradeAssignment(assignment)">Grade</button>
             </mat-card-actions>
             
-            <mat-card-content *ngIf="assignment.grade!=-1">
+            <mat-card-content *ngIf="assignment.grade!=undefined">
               <mat-label><h2>Grade:</h2></mat-label>
               <p>{{ assignment.grade }} / 20</p>
             </mat-card-content>

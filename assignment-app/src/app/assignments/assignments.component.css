@@ -1,6 +1,5 @@
 .rendu {
   
-  
   padding:2px;
   grid-column: 1 / 2;
   grid-row: 1;
@@ -8,7 +7,6 @@
 
 .nonRendu {
 
-  
   padding:2px;
   background-color:yellow;
   grid-column: 2 / 2 ;
@@ -28,7 +26,19 @@
 }
 
 .ajouterBtn {
-  align-self: flex-end;
+  grid-column: 1 / 2;
+  grid-row: 1;
+  
+  align-content: center;
+  margin-top: 20px;
+}
+
+.populateBtn {
+  grid-column: 1 / 2;
+  grid-row: 1;
+ 
+  align-content: center;
+  margin-top: 25px;
 }
 
 .example-card {
@@ -115,4 +125,11 @@ mat-card img{
 
 .grade {
   color:teal;
+}
+
+.upperButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(20px, auto);
 }
