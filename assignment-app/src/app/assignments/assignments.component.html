@@ -24,7 +24,9 @@
               
               <mat-card-content class="student">
                 <h2>Assigned to student : </h2>
-                <h2>{{ assignment.student }}</h2>
+                <h3>{{ assignment.student }}</h3>
+                <h2>Turned in date : </h2>
+                <h3>{{ assignment.dateDeRendu }}</h3>
                 <div *ngIf="isAdmin()">
                 <h2 class="toggleRendu">Turn over </h2>
                 <mat-slide-toggle (click)="changeRendu(assignment)"></mat-slide-toggle>
@@ -62,7 +64,9 @@
             
             <mat-card-content class="student">
               <h2>Assigned to student : </h2>
-              <h2>{{ assignment.student }}</h2>
+              <h3>{{ assignment.student }}</h3>
+              <h2>Turned in date : </h2>
+              <h3>{{ assignment.dateDeRendu }}</h3>
               <div *ngIf="assignment.comments!=''">
                 <mat-label><h2>Comments:</h2></mat-label>
                 <p>{{ assignment.comments }}</p>
